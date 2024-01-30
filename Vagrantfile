@@ -53,7 +53,10 @@ Vagrant.configure("2") do |config|
 		  subconfig.proxy.http = PROXY_URL
 		  subconfig.proxy.https = PROXY_URL
 		  subconfig.proxy.no_proxy = NO_PROXY
-	    end
+	    else
+		  puts "Attenzione: Il plugin 'vagrant-proxyconf' non è installato. Installalo con 'vagrant plugin install vagrant-proxyconf' per abilitare la configurazione del proxy."
+		  exit
+		end
 	  end
 	
 	  subconfig.vm.synced_folder "./site", "/var/www/html"
@@ -78,7 +81,10 @@ Vagrant.configure("2") do |config|
 		  subconfig.proxy.http = PROXY_URL
 		  subconfig.proxy.https = PROXY_URL
 		  subconfig.proxy.no_proxy = NO_PROXY
-	    end
+	    else
+		  puts "Attenzione: Il plugin 'vagrant-proxyconf' non è installato. Installalo con 'vagrant plugin install vagrant-proxyconf' per abilitare la configurazione del proxy."
+		  exit
+		end
 	  end
 	  subconfig.vm.provision "shell" , path: PROVISION_SCRIPTS[1]
 	end
